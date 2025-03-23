@@ -21,6 +21,9 @@ export default defineConfig({
 			conditions: ["workerd", "worker", "browser"],
 		},
 	},
+	server: {
+		port: 3000,
+	},
 	resolve: {
 		mainFields: ["browser", "module", "main"],
 	},

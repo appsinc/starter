@@ -1,17 +1,7 @@
-// server/index.ts
-import { Hono } from "hono";
+import { API } from "@/api/lib/hono";
+import { registerHealthRoutes } from "@/api/routes/health";
 
-const app = new Hono();
+const api = API();
+registerHealthRoutes(api);
 
-app.use(async (c, next) => {
-	await next();
-	c.header("X-Powered-By", "React Router and Hono");
-});
-
-app.get("/api", (c) => {
-	return c.json({
-		message: "Hello",
-	});
-});
-
-export default app;
+export default api;
