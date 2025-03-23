@@ -4,10 +4,10 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { redirect } from "react-router";
 import db from "@starter/db";
 
-const config = () => {
+const config = async () => {
 	return {
 		basePath: "/api/auth",
-		database: drizzleAdapter(db, {
+		database: drizzleAdapter(await db(), {
 			provider: "pg",
 			schema: {
 				user: schema.users,
@@ -17,7 +17,7 @@ const config = () => {
 			},
 		}),
 		emailAndPassword: {
-			enabled: false,
+			enabled: true,
 		},
 		account: {
 			accountLinking: {
@@ -38,9 +38,7 @@ const config = () => {
 	} as const;
 };
 
-export const auth = () => {
-	return betterAuth(config());
-};
+export const auth = betterAuth(await config());
 
 type getServerSideSessionProps = {
 	request: Request;
@@ -52,7 +50,7 @@ export const getServerSideSession = async ({
 	api = false,
 }: getServerSideSessionProps) => {
 	const headers = new Headers(request.headers);
-	const session = await auth().api.getSession({
+	const session = await auth.api.getSession({
 		headers,
 	});
 

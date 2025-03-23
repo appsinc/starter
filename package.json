@@ -12,7 +12,9 @@
     "lint": "biome lint .",
     "format": "prettier --check .",
     "typecheck": "tsc",
-    "validate": "pnpm run lint && pnpm run format && pnpm run typecheck"
+    "validate": "pnpm run lint && pnpm run format && pnpm run typecheck",
+    "db:generate": "bun run --cwd packages/db drizzle-kit --config config.ts generate",
+    "db:migrate": "bun run --cwd packages/db drizzle-kit --config config.ts migrate"
   },
   "dependencies": {
     "@hono/zod-openapi": "^0.19.2",
