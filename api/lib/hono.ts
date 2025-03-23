@@ -36,18 +36,16 @@ export function API() {
     openapi: "3.1.0",
     info: {
       version: "v1",
-      title: "Fuzzy search API",
-      description: "Fuzzy search API using Cloudflare worker and Durable Objects",
+      title: "Starter API",
+      description: "Starter API",
     },
-    servers: [{ url: "http://localhost:3000" }],
+    servers: [{ url: process.env.BETTER_AUTH_URL as string }],
   }));
 
   api.get(
     "/api/docs",
     apiReference({
-      spec: {
-        url: "/api/schema",
-      },
+      url: "/api/schema"
     }),
   );
 
