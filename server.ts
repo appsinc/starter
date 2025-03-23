@@ -1,8 +1,8 @@
-import { createRequestHandler, type ServerBuild } from 'react-router'
-import * as build from './build/server'
-import { getLoadContext } from './load-context'
+import { type ServerBuild, createRequestHandler } from "react-router";
+import * as build from "./build/server";
+import { getLoadContext } from "./load-context";
 
-const requestHandler = createRequestHandler(build as unknown as ServerBuild)
+const requestHandler = createRequestHandler(build as unknown as ServerBuild);
 
 export default {
   async fetch(request, env, ctx) {
@@ -25,11 +25,11 @@ export default {
             env,
           },
         },
-      })
-      return await requestHandler(request, loadContext)
+      });
+      return await requestHandler(request, loadContext);
     } catch (error) {
-      console.log(error)
-      return new Response('An unexpected error occurred', { status: 500 })
+      console.log(error);
+      return new Response("An unexpected error occurred", { status: 500 });
     }
   },
-} satisfies ExportedHandler<Env>
+} satisfies ExportedHandler<Env>;

@@ -1,16 +1,19 @@
 import { handleError, handleZodError } from "@/api/lib/error";
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { apiReference } from "@scalar/hono-api-reference";
-import type { Bindings } from "hono/types";
 import { auth } from "@starter/auth";
+import type { Bindings } from "hono/types";
 
 const PUBLIC_ROUTES = ["/favicon", "/search", "/schema", "/docs"];
 
 export function API() {
-  const api = new OpenAPIHono<{ Bindings: Bindings, Variables: { 
-    user: typeof auth.$Infer.Session.user | null;
-		session: typeof auth.$Infer.Session.session | null
-   } }>({
+  const api = new OpenAPIHono<{
+    Bindings: Bindings;
+    Variables: {
+      user: typeof auth.$Infer.Session.user | null;
+      session: typeof auth.$Infer.Session.session | null;
+    };
+  }>({
     defaultHook: handleZodError,
   }).basePath("/");
 
@@ -45,7 +48,7 @@ export function API() {
   api.get(
     "/api/docs",
     apiReference({
-      url: "/api/schema"
+      url: "/api/schema",
     }),
   );
 
@@ -67,22 +70,21 @@ export function API() {
 
   api.use("*", async (c, next) => {
     const session = await auth.api.getSession({ headers: c.req.raw.headers });
-   
-      if (!session) {
-        c.set("user", null);
-        c.set("session", null);
-        return next();
-      }
-   
-      c.set("user", session.user);
-      c.set("session", session.session);
-      return next();
-  });
 
+    if (!session) {
+      c.set("user", null);
+      c.set("session", null);
+      return next();
+    }
+
+    c.set("user", session.user);
+    c.set("session", session.session);
+    return next();
+  });
 
   api.on(["POST", "GET"], "/api/auth/*", (c) => {
     return auth.handler(c.req.raw);
-  })
+  });
 
   return api;
 }

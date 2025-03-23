@@ -1,11 +1,11 @@
-import type { MetaFunction } from 'react-router'
+import type { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'New React Router App' },
-    { name: 'description', content: 'Welcome to React Router!' },
-  ]
-}
+    { title: "New React Router App" },
+    { name: "description", content: "Welcome to React Router!" },
+  ];
+};
 
 export default function Index() {
   return (
@@ -50,13 +50,13 @@ export default function Index() {
         </nav>
       </div>
     </div>
-  )
+  );
 }
 
 const resources = [
   {
-    href: 'https://reactrouter.com/dev',
-    text: 'React Router Docs',
+    href: "https://reactrouter.com/dev",
+    text: "React Router Docs",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +76,8 @@ const resources = [
     ),
   },
   {
-    href: 'https://rmx.as/discord',
-    text: 'Join Discord',
+    href: "https://rmx.as/discord",
+    text: "Join Discord",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -95,4 +95,4 @@ const resources = [
       </svg>
     ),
   },
-]
+];
