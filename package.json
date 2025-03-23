@@ -17,11 +17,13 @@
   "dependencies": {
     "@hono/zod-openapi": "^0.19.2",
     "@neondatabase/serverless": "^0.10.4",
+    "@paralleldrive/cuid2": "^2.2.2",
     "@react-router/cloudflare": "7.4.0",
     "@scalar/hono-api-reference": "^0.7.2",
     "@starter/db": "workspace:*",
     "@starter/ui": "workspace:*",
     "drizzle-orm": "^0.41.0",
+    "drizzle-zod": "^0.7.0",
     "hono": "^4.7.5",
     "hono-react-router-adapter": "^0.6.3",
     "isbot": "^5.1.25",
