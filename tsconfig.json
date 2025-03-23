@@ -18,6 +18,7 @@
     ],
     "isolatedModules": true,
     "esModuleInterop": true,
+    "module": "ESNext",
     "jsx": "react-jsx",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
