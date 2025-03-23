@@ -29,7 +29,7 @@ const config = async () => {
 				enabled: false,
 			},
 			cookie: {
-				name: "better_auth_session",
+				name: "starter:session",
 				secure: process.env.NODE_ENV === "production",
 				sameSite: "lax",
 				path: "/",

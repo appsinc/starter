@@ -14,7 +14,8 @@
     "typecheck": "tsc",
     "validate": "pnpm run lint && pnpm run format && pnpm run typecheck",
     "db:generate": "bun run --cwd packages/db drizzle-kit --config config.ts generate",
-    "db:migrate": "bun run --cwd packages/db drizzle-kit --config config.ts migrate"
+    "db:migrate": "bun run --cwd packages/db drizzle-kit --config config.ts migrate",
+    "db:studio": "bun run --cwd packages/db drizzle-kit --config config.ts studio"
   },
   "dependencies": {
     "@hono/zod-openapi": "^0.19.2",
