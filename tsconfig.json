@@ -29,7 +29,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./app/*"],
-      "@/api/*": ["./api/*"]
+      "@/api/*": ["./api/*"],
+      "@/db/*": ["./db/*"],
+      "@/env": ["./env.d.ts"]
     },
 
     // Remix takes care of building everything in `remix build`.

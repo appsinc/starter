@@ -13,3 +13,13 @@ directory = "./build/client"
 
 [build]
 command = "bun run build"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "starter"
+database_id = "YOUR_DB_ID"
+migrations_dir = "db/migrations"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "starter"
